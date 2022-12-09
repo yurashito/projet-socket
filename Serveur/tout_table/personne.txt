@@ -1,0 +1,3 @@
+personne
+nom,prenom
+rampanjatonirina,solondraibe;linda,smoldas

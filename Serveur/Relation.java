@@ -32,7 +32,7 @@ public class Relation implements Serializable{
         Tableau = tableau;
     }
     public void ecrire(){
-        File fichier= new File(this.Nom+".txt") ;
+        File fichier= new File("tout_table/"+this.Nom+".txt") ;
         Fonction function = new Fonction();
         if(fichier.exists()==false){
             try(BufferedWriter stylo=new BufferedWriter(new FileWriter(fichier,true))) 

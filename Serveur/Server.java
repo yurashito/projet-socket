@@ -5,25 +5,37 @@ import relation.*;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
-public class Server {
-      public static void main(String[] args) throws Exception { 
-        ServerSocket serverSocket = new ServerSocket(3000);
-        Socket clientSocket = serverSocket.accept();
-        BufferedReader  in = new BufferedReader (new InputStreamReader (clientSocket.getInputStream()));  
-        Fonction function = new Fonction();
-        while(true){
-            String requette=in.readLine();
-            System.out.println(serverSocket.getInetAddress() +" : "+ requette );
-            Relation relation=function.requette(requette) ;
-            System.out.println(relation.getNom());
-            ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
-            out.writeObject(relation);
-            if(1==2){
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
+import java.sql.SQLException;
+import exception.*;
+import traitement.*;
+public class Server extends Thread{
 
-                break;
+        ServerSocket serverSocket ;
+
+       public Server(int port) throws Exception
+       {
+            serverSocket = new ServerSocket(port);
+       }
+       public void run(){
+            try{
+                while(true){
+                    Socket clientSocket = serverSocket.accept();
+                    Traitement traitement= new Traitement(clientSocket);
+                    traitement.start();
+                }
             }
-      }
-      clientSocket.close();
-      serverSocket.close();
+            catch(Exception ex)
+            {
+                System.out.println(ex);
+            }
+        }
+
+    public static void main(String[] args)throws Exception{         
+        Server server = new Server(2000);
+        server.start();
    }
 }

@@ -73,5 +73,55 @@ public class Fonction {
 
         return somme;
     }   
+    public int nombre_caractere_max(Relation relation){
+        Object[][] tableau= relation.getTableau();
+        
+        int max= 0;
+        if(tableau.length!=0)
+        { 
+            max=String.valueOf(tableau[0][0]).length();
+        }
+        for(int i=0; i<tableau.length ; i++){
+            for(int j=0; j<tableau[0].length ; j++){
+                String ray=String.valueOf(tableau[i][j]);
+                int nombre= ray.length();
+                if(nombre>max){
+                    max= nombre;
+                }
+            }
+        }
+        return max;
+    }
+    public int nombre_max_colonne(Relation relation ,int indice){
+        Object[][] tableau= relation.getTableau();
+
+        int max=0;
+        if(tableau.length!=0)
+        { 
+            max= String.valueOf(tableau[0][indice]).length();
+        }
+        for(int i=0; i<tableau.length ; i++){
+            String ray=String.valueOf(tableau[i][indice]);
+            int nombre= ray.length();
+            if(nombre>max){
+                max= nombre;
+            }
+        }
+        return max;
+    }
+
+    
+    public String mameno_par_esapce(String mot  , int max){
+        String somme= mot;
+        if(mot.length()<max){
+            int nombre=mot.length();
+            while(nombre<max){
+                somme=somme+" ";
+                nombre++;
+            }
+        }
+        somme=somme+"|";
+        return somme;
+    }
 
 }
