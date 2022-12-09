@@ -3,6 +3,7 @@ Projet socket :
     --select : 
         ---select * from nomtable
         ---select nomcolonne from nom table
+	---select * from nomtable where colonne=valeur(condition)
     --difference :
         ---differentre entre table1 et table2
     --create table :
