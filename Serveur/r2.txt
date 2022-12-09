@@ -1,3 +1,0 @@
-r2
-numeroEleve1
-1;2;3
