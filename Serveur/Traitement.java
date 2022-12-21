@@ -27,7 +27,7 @@ public class Traitement extends Thread{
                             out.close();
                             clientSocket.close();
                         }else{
-                            Relation relation = function.requette(requette);   
+                            Relation relation = function.requette(requette);  
                             out.writeObject(relation);
                             out.flush();
                         }

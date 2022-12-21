@@ -507,7 +507,7 @@ public class Fonction {
     public Relation requette_difference(String requeste) throws Exception {
      String[] separer = requeste.split(" ");
         Relation fin=new Relation();
-        if(separer.length!=5)
+        if(separer.length!=5 )
         {
             GereException ex= new GereException("la requette doit etre de la forme 'diference entre nom_table1 et nom_table2 '");
         }
@@ -567,6 +567,7 @@ public class Fonction {
                      throw new GereException("verifier bien votre requette");
                 }
                 stylo.close();
+                br.close();
                throw new GereException("inserer avec succe");
             }else{
                throw new GereException("ce table n'existe pas");
@@ -577,7 +578,7 @@ public class Fonction {
     public void supprime_table(String requette)throws Exception{
         String[] separer = requette.split(" ");
         if(separer[0].equals("supprime") && separer[1].equals("table")){
-            File fichier= new File("tout_table\\"+separer[2]+".txt");
+            File fichier= new File("tout_table/"+separer[2]+".txt");
             if(fichier.exists()){
                 fichier.delete();
                throw new GereException("table "+separer[2]+" supprimer avec succes");
